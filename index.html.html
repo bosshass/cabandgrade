@@ -22,8 +22,8 @@
     
     <style>
         :root {
-            --teal: #0D9488;
-            --teal-light: #14B8A6;
+            --mint: #4ADE80;
+            --mint-light: #86EFAC;
             --slate-900: #0f172a;
             --slate-800: #1e293b;
             --slate-700: #334155;
@@ -49,9 +49,22 @@
             overflow-x: hidden;
         }
         
+        /* Topo background pattern */
+        .topo-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            opacity: 0.07;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600' viewBox='0 0 600 600'%3E%3Cpath d='M300 50 Q400 100 450 200 T500 350 Q480 450 400 500 T250 520 Q150 500 100 420 T80 280 Q100 180 180 120 T300 50' fill='none' stroke='%234ADE80' stroke-width='1'/%3E%3Cpath d='M300 100 Q380 140 420 220 T450 340 Q435 420 370 465 T240 480 Q160 465 120 400 T110 290 Q125 200 190 150 T300 100' fill='none' stroke='%234ADE80' stroke-width='1'/%3E%3Cpath d='M300 150 Q360 180 390 240 T410 330 Q398 390 345 425 T235 445 Q175 432 145 380 T135 295 Q148 220 200 180 T300 150' fill='none' stroke='%234ADE80' stroke-width='1'/%3E%3Cpath d='M300 200 Q345 225 365 270 T380 330 Q370 370 335 395 T265 415 Q215 405 190 365 T175 300 Q185 245 220 215 T300 200' fill='none' stroke='%234ADE80' stroke-width='1'/%3E%3Cpath d='M300 250 Q330 265 345 295 T355 335 Q348 360 325 375 T275 385 Q245 378 230 355 T220 310 Q228 275 255 258 T300 250' fill='none' stroke='%234ADE80' stroke-width='1'/%3E%3C/svg%3E");
+            background-size: 600px 600px;
+        }
+        
         /* Utility */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -63,9 +76,9 @@
             left: 0;
             right: 0;
             z-index: 100;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 3px solid var(--teal);
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--mint);
         }
         
         .header-inner {
@@ -73,15 +86,15 @@
             justify-content: space-between;
             align-items: center;
             padding: 16px 24px;
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
         }
         
         .logo {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             letter-spacing: 2px;
-            color: var(--teal-light);
+            color: var(--mint);
             text-decoration: none;
         }
         
@@ -89,23 +102,16 @@
             color: var(--white);
         }
         
-        .header-cta {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        
-        .phone-link {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.4rem;
-            color: var(--white);
+        .header-phone {
+            font-family: 'IBM Plex Sans', sans-serif;
+            font-size: 1rem;
+            color: var(--slate-400);
             text-decoration: none;
-            letter-spacing: 1px;
             transition: color 0.3s ease;
         }
         
-        .phone-link:hover {
-            color: var(--teal-light);
+        .header-phone:hover {
+            color: var(--mint);
         }
         
         /* Hero */
@@ -113,395 +119,294 @@
             min-height: 100vh;
             display: flex;
             align-items: center;
-            position: relative;
-            padding-top: 80px;
-            background: 
-                linear-gradient(135deg, rgba(15,23,42,0.97) 0%, rgba(15,23,42,0.85) 100%),
-                repeating-linear-gradient(
-                    0deg,
-                    transparent,
-                    transparent 50px,
-                    rgba(13,148,136,0.05) 50px,
-                    rgba(13,148,136,0.05) 51px
-                ),
-                repeating-linear-gradient(
-                    90deg,
-                    transparent,
-                    transparent 50px,
-                    rgba(13,148,136,0.05) 50px,
-                    rgba(13,148,136,0.05) 51px
-                );
+            justify-content: center;
+            text-align: center;
+            padding: 120px 24px 80px;
         }
         
         .hero-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
+            max-width: 800px;
         }
         
-        .hero-text h1 {
+        .hero h1 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(3rem, 8vw, 5.5rem);
-            line-height: 0.95;
-            letter-spacing: 2px;
+            font-size: clamp(2.8rem, 8vw, 5rem);
+            line-height: 1;
+            letter-spacing: 3px;
             margin-bottom: 24px;
         }
         
-        .hero-text h1 .highlight {
-            color: var(--teal-light);
+        .hero h1 .highlight {
+            color: var(--mint);
             display: block;
+            font-size: clamp(3.2rem, 10vw, 6rem);
         }
         
-        .hero-text .tagline {
-            font-size: 1.25rem;
+        .hero .tagline {
+            font-size: 1.2rem;
             color: var(--slate-400);
-            margin-bottom: 32px;
-            max-width: 500px;
+            margin-bottom: 48px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
-        .hero-text .tagline strong {
+        .hero .tagline strong {
             color: var(--white);
-            font-weight: 600;
         }
         
-        .cta-button {
-            display: inline-block;
-            background: var(--teal);
-            color: var(--slate-900);
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            padding: 16px 40px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 3px solid var(--teal);
-        }
-        
-        .cta-button:hover {
-            background: transparent;
-            color: var(--teal);
-        }
-        
-        .hero-stats {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-        
-        .stat-block {
+        /* Main CTA */
+        .cta-block {
             background: var(--slate-800);
-            padding: 32px;
-            border-left: 4px solid var(--teal);
-            position: relative;
-            overflow: hidden;
+            padding: 40px;
+            border: 1px solid var(--slate-700);
+            display: inline-block;
         }
         
-        .stat-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 100px;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(13,148,136,0.08));
-        }
-        
-        .stat-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: var(--teal);
-            line-height: 1;
-        }
-        
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--slate-400);
+        .cta-label {
+            font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 8px;
+            letter-spacing: 2px;
+            color: var(--mint);
+            margin-bottom: 12px;
+        }
+        
+        .cta-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 3px;
+            display: block;
+            transition: color 0.3s ease;
+        }
+        
+        .cta-phone:hover {
+            color: var(--mint);
+        }
+        
+        .cta-subtext {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            color: var(--slate-400);
         }
         
         /* Section Styling */
         section {
-            padding: 100px 0;
+            padding: 80px 0;
         }
         
         .section-header {
-            margin-bottom: 60px;
+            margin-bottom: 48px;
+            text-align: center;
         }
         
         .section-header h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 4vw, 2.8rem);
             letter-spacing: 2px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         
         .section-header .accent-line {
-            width: 80px;
-            height: 4px;
-            background: var(--teal);
+            width: 60px;
+            height: 3px;
+            background: var(--mint);
+            margin: 0 auto;
         }
         
         /* Services */
         .services {
-            background: var(--slate-800);
+            background: rgba(30, 41, 59, 0.5);
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
         
         .service-card {
             background: var(--slate-900);
-            padding: 40px 32px;
-            position: relative;
+            padding: 32px 28px;
+            border-left: 3px solid var(--mint);
             transition: transform 0.3s ease;
         }
         
         .service-card:hover {
-            transform: translateY(-4px);
-        }
-        
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--teal);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.3s ease;
-        }
-        
-        .service-card:hover::before {
-            transform: scaleX(1);
-        }
-        
-        .service-icon {
-            font-size: 2rem;
-            margin-bottom: 20px;
+            transform: translateX(4px);
         }
         
         .service-card h3 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             letter-spacing: 1px;
-            margin-bottom: 12px;
-            color: var(--teal);
+            margin-bottom: 10px;
+            color: var(--white);
         }
         
         .service-card p {
             color: var(--slate-400);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
         
         /* Differentiator */
         .differentiator {
-            background: var(--slate-900);
-            position: relative;
+            text-align: center;
         }
         
         .diff-content {
-            display: grid;
-            grid-template-columns: 1fr 1.2fr;
-            gap: 60px;
-            align-items: center;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
-        .diff-text h2 {
+        .diff-content h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             letter-spacing: 2px;
             margin-bottom: 24px;
         }
         
-        .diff-text h2 .highlight {
-            color: var(--teal);
+        .diff-content h2 .highlight {
+            color: var(--mint);
         }
         
-        .diff-text p {
+        .diff-content p {
             color: var(--slate-400);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
+            font-size: 1.05rem;
+            margin-bottom: 16px;
         }
         
-        .diff-text p strong {
+        .diff-content p strong {
             color: var(--white);
         }
         
         .credentials {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
             margin-top: 32px;
+            justify-content: center;
         }
         
         .credential-tag {
-            background: var(--slate-700);
-            padding: 10px 20px;
-            font-size: 0.85rem;
+            background: var(--slate-800);
+            padding: 8px 16px;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-left: 3px solid var(--teal);
-        }
-        
-        .diff-visual {
-            position: relative;
-        }
-        
-        .quote-block {
-            background: var(--slate-800);
-            padding: 48px;
-            position: relative;
-        }
-        
-        .quote-block::before {
-            content: '"';
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 8rem;
-            color: var(--teal);
-            opacity: 0.3;
-            position: absolute;
-            top: -20px;
-            left: 20px;
-            line-height: 1;
-        }
-        
-        .quote-block p {
-            font-size: 1.4rem;
-            font-weight: 500;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .quote-block .attribution {
-            margin-top: 24px;
-            font-size: 0.9rem;
-            color: var(--slate-400);
+            color: var(--mint-light);
+            border: 1px solid var(--slate-700);
         }
         
         /* Equipment */
         .equipment {
-            background: var(--slate-800);
+            background: rgba(30, 41, 59, 0.5);
         }
         
         .equipment-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 12px;
             justify-content: center;
         }
         
         .equipment-tag {
             background: var(--slate-900);
-            padding: 16px 28px;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            border: 2px solid var(--slate-700);
+            padding: 12px 20px;
+            font-size: 0.9rem;
+            color: var(--slate-400);
+            border: 1px solid var(--slate-700);
             transition: all 0.3s ease;
         }
         
         .equipment-tag:hover {
-            border-color: var(--teal);
-            color: var(--teal);
+            border-color: var(--mint);
+            color: var(--mint);
         }
         
         /* Contact */
         .contact {
-            background: var(--slate-900);
             text-align: center;
+            padding: 100px 24px;
         }
         
         .contact h2 {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-size: clamp(2rem, 5vw, 3rem);
             letter-spacing: 2px;
-            margin-bottom: 16px;
+            margin-bottom: 12px;
         }
         
         .contact .subtitle {
             color: var(--slate-400);
-            font-size: 1.1rem;
-            margin-bottom: 48px;
+            font-size: 1rem;
+            margin-bottom: 40px;
         }
         
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
+        .contact-cta {
+            margin-bottom: 40px;
         }
         
         .contact-phone {
             font-family: 'Bebas Neue', sans-serif;
             font-size: clamp(2rem, 5vw, 3.5rem);
-            color: var(--teal);
+            color: var(--mint);
             text-decoration: none;
             letter-spacing: 3px;
             transition: all 0.3s ease;
         }
         
         .contact-phone:hover {
-            text-shadow: 0 0 30px rgba(20,184,166,0.5);
+            text-shadow: 0 0 30px rgba(74, 222, 128, 0.4);
         }
         
-        .contact-detail {
+        .contact-subtext {
+            margin-top: 8px;
+            font-size: 0.95rem;
             color: var(--slate-400);
+        }
+        
+        .contact-name {
+            margin-top: 32px;
             font-size: 1rem;
+            color: var(--white);
         }
         
-        .service-area {
-            margin-top: 48px;
-            padding: 32px;
-            background: var(--slate-800);
-            display: inline-block;
-        }
-        
-        .service-area h3 {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.3rem;
-            letter-spacing: 1px;
-            margin-bottom: 8px;
-            color: var(--teal);
-        }
-        
-        .service-area p {
+        .contact-location {
+            font-size: 0.9rem;
             color: var(--slate-400);
+            margin-top: 4px;
         }
         
         /* Footer */
         footer {
             background: var(--slate-800);
-            padding: 40px 0;
+            padding: 32px 0;
             text-align: center;
-            border-top: 3px solid var(--teal);
+            border-top: 2px solid var(--mint);
         }
         
         footer p {
             color: var(--slate-400);
-            font-size: 0.9rem;
+            font-size: 0.85rem;
         }
         
         /* Responsive */
-        @media (max-width: 900px) {
-            .hero-content {
-                grid-template-columns: 1fr;
-                gap: 40px;
+        @media (max-width: 600px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 8px;
             }
             
-            .hero-stats {
-                grid-template-columns: repeat(3, 1fr);
+            .cta-block {
+                padding: 28px 24px;
+                width: 100%;
             }
             
-            .diff-content {
-                grid-template-columns: 1fr;
+            section {
+                padding: 60px 0;
             }
             
             .services-grid {
@@ -509,38 +414,11 @@
             }
         }
         
-        @media (max-width: 600px) {
-            .header-inner {
-                flex-direction: column;
-                gap: 12px;
-            }
-            
-            .hero-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .stat-block {
-                padding: 24px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .quote-block {
-                padding: 32px 24px;
-            }
-            
-            .quote-block p {
-                font-size: 1.1rem;
-            }
-        }
-        
         /* Animations */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -548,54 +426,36 @@
             }
         }
         
-        .hero-text, .hero-stats {
+        .hero-content {
             animation: fadeInUp 0.8s ease forwards;
-        }
-        
-        .hero-stats {
-            animation-delay: 0.3s;
         }
     </style>
 </head>
 <body>
+    <div class="topo-bg"></div>
+    
     <!-- Header -->
     <header>
         <div class="header-inner">
             <a href="#" class="logo">CAB & GRADE <span>MACHINE CONTROL</span></a>
-            <div class="header-cta">
-                <a href="tel:7209094727" class="phone-link">720-909-4727</a>
-            </div>
+            <a href="tel:7209094727" class="header-phone">720-909-4727</a>
         </div>
     </header>
     
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>
-                        THE TECH WHO CAN
-                        <span class="highlight">RUN YOUR MACHINE</span>
-                    </h1>
-                    <p class="tagline">
-                        GPS machine control, GNSS RTK setup, and diagnostics from a <strong>factory-trained technician</strong> with real seat time. Based in Denver, serving jobsites nationwide.
-                    </p>
-                    <a href="tel:7209094727" class="cta-button">Call Dylan: 720-909-4727</a>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-block">
-                        <div class="stat-number">25+</div>
-                        <div class="stat-label">Years on Heavy Equipment</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="stat-number">TRIMBLE</div>
-                        <div class="stat-label">Factory-Trained Technician</div>
-                    </div>
-                    <div class="stat-block">
-                        <div class="stat-number">NATIONWIDE</div>
-                        <div class="stat-label">Service from Denver, CO</div>
-                    </div>
-                </div>
+        <div class="hero-content">
+            <h1>
+                THE TECH WHO CAN
+                <span class="highlight">RUN YOUR MACHINE</span>
+            </h1>
+            <p class="tagline">
+                GPS machine control, GNSS RTK setup, and diagnostics from a <strong>factory-trained technician</strong> with real seat time. Denver-based, serving jobsites nationwide.
+            </p>
+            <div class="cta-block">
+                <div class="cta-label">Machine Down? Call Now.</div>
+                <a href="tel:7209094727" class="cta-phone">720-909-4727</a>
+                <div class="cta-subtext">Call or text — I pick up</div>
             </div>
         </div>
     </section>
@@ -609,34 +469,28 @@
             </div>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">📡</div>
                     <h3>GNSS & RTK Setup</h3>
-                    <p>Base and rover configuration, Ace rover setup, network RTK connections. Get your positioning system dialed in right the first time.</p>
+                    <p>Base and rover configuration, Ace rover setup, network RTK connections. Get your positioning dialed in right the first time.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🔧</div>
                     <h3>Cab Install Kits</h3>
-                    <p>Complete hardware installation for GPS machine control systems. Displays, receivers, sensors, and harnesses installed to spec.</p>
+                    <p>Complete hardware installation for GPS machine control. Displays, receivers, sensors, and harnesses installed to spec.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">⚡</div>
                     <h3>CAN Bus Diagnostics</h3>
-                    <p>Electrical troubleshooting for machine data networks. When your sensors aren't talking to your display, I find out why.</p>
+                    <p>Electrical troubleshooting for machine data networks. When sensors aren't talking to your display, I find out why.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎯</div>
                     <h3>Machine Control Troubleshooting</h3>
                     <p>System not hitting grade? Display throwing errors? I diagnose and fix what's keeping you from production.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">⚙️</div>
                     <h3>Earthworks Configuration</h3>
-                    <p>Full setup and calibration of Trimble Earthworks systems. Automatics configuration, sensor calibration, and blade/bucket setup.</p>
+                    <p>Full setup and calibration of Trimble Earthworks. Automatics config, sensor calibration, blade/bucket setup.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🔄</div>
                     <h3>GCS 900 to Earthworks Conversions</h3>
-                    <p>Upgrade your legacy GCS 900 systems to Earthworks. File conversions, machine file setup, and operator training included.</p>
+                    <p>Upgrade legacy GCS 900 systems to Earthworks. File conversions, machine file setup, and operator training.</p>
                 </div>
             </div>
         </div>
@@ -646,29 +500,21 @@
     <section class="differentiator">
         <div class="container">
             <div class="diff-content">
-                <div class="diff-text">
-                    <h2>MOST TECHS <span class="highlight">CAN'T DRIVE</span></h2>
-                    <p>
-                        They show up, plug in a laptop, and tell you what's wrong in language that doesn't help. Then they leave, and you're still not hitting grade.
-                    </p>
-                    <p>
-                        <strong>Dylan's been running heavy equipment since he was 15.</strong> Dozers, excavators, graders, scrapers—he's got real seat time on all of it. When he troubleshoots your machine control system, he can hop in the cab and actually test it himself.
-                    </p>
-                    <p>
-                        That means faster diagnostics, better calibrations, and a tech who speaks <strong>operator</strong> just as well as he speaks tech.
-                    </p>
-                    <div class="credentials">
-                        <span class="credential-tag">Factory-Trained Trimble Tech</span>
-                        <span class="credential-tag">GNSS & RTK Certified</span>
-                        <span class="credential-tag">Earthworks Qualified</span>
-                        <span class="credential-tag">GCS 900 Specialist</span>
-                    </div>
-                </div>
-                <div class="diff-visual">
-                    <div class="quote-block">
-                        <p>Finally, a tech who can actually test what he's fixing.</p>
-                        <div class="attribution">— The difference real seat time makes</div>
-                    </div>
+                <h2>MOST TECHS <span class="highlight">CAN'T DRIVE</span></h2>
+                <p>
+                    They show up, plug in a laptop, and explain the problem in language that doesn't help. Then they leave, and you're still not hitting grade.
+                </p>
+                <p>
+                    <strong>Dylan's been running heavy equipment since he was 15.</strong> Dozers, excavators, graders, scrapers—real seat time on all of it. When he troubleshoots your system, he hops in the cab and tests it himself.
+                </p>
+                <p>
+                    Faster diagnostics. Better calibrations. A tech who speaks <strong>operator</strong>.
+                </p>
+                <div class="credentials">
+                    <span class="credential-tag">Factory-Trained Trimble Tech</span>
+                    <span class="credential-tag">GNSS & RTK Certified</span>
+                    <span class="credential-tag">Earthworks Qualified</span>
+                    <span class="credential-tag">GCS 900 Specialist</span>
                 </div>
             </div>
         </div>
@@ -677,9 +523,9 @@
     <!-- Equipment Section -->
     <section class="equipment">
         <div class="container">
-            <div class="section-header" style="text-align: center;">
+            <div class="section-header">
                 <h2>Machines & Industries</h2>
-                <div class="accent-line" style="margin: 0 auto;"></div>
+                <div class="accent-line"></div>
             </div>
             <div class="equipment-list">
                 <span class="equipment-tag">Dozers</span>
@@ -691,7 +537,6 @@
                 <span class="equipment-tag">Site Development</span>
                 <span class="equipment-tag">Mining</span>
                 <span class="equipment-tag">Agriculture</span>
-                <span class="equipment-tag">Residential Grading</span>
             </div>
         </div>
     </section>
@@ -700,15 +545,13 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Get Your System Running Right</h2>
-            <p class="subtitle">Flat rate troubleshooting. No dealer markup. Real seat time.</p>
-            <div class="contact-info">
+            <p class="subtitle">No dealer markup. No runaround. Just results.</p>
+            <div class="contact-cta">
                 <a href="tel:7209094727" class="contact-phone">720-909-4727</a>
-                <p class="contact-detail">Dylan Kreiling | Cab & Grade Machine Control</p>
+                <div class="contact-subtext">Call or text — I pick up</div>
             </div>
-            <div class="service-area">
-                <h3>Service Area</h3>
-                <p>Based in Denver, CO — Available for nationwide travel</p>
-            </div>
+            <div class="contact-name">Dylan Kreiling</div>
+            <div class="contact-location">Based in Denver, CO — Available nationwide</div>
         </div>
     </section>
     

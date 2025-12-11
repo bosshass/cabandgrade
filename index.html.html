@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cab & Grade Machine Control | GPS Machine Control Services | Denver, CO</title>
+    <meta name="description" content="Factory-trained Trimble technician providing GPS machine control, GNSS RTK setup, Earthworks configuration, and CAN bus diagnostics. Based in Denver, serving nationwide. The tech who can actually run your machine.">
+    <meta name="keywords" content="GPS machine control, GNSS RTK, Trimble, machine control troubleshooting, Earthworks configuration, GCS 900, cab install kits, construction technology, heavy equipment GPS, base and rover setup, Denver machine control">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Cab & Grade Machine Control">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Cab & Grade Machine Control | GPS & GNSS Services">
+    <meta property="og:description" content="Factory-trained technician with real seat time. GPS machine control, GNSS RTK, Earthworks config, CAN diagnostics. Denver-based, nationwide service.">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="en_US">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --teal: #0D9488;
+            --teal-light: #14B8A6;
+            --slate-900: #0f172a;
+            --slate-800: #1e293b;
+            --slate-700: #334155;
+            --slate-400: #94a3b8;
+            --white: #f1f5f9;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background-color: var(--slate-900);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Utility */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--teal);
+        }
+        
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: var(--teal-light);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--white);
+        }
+        
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .phone-link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.4rem;
+            color: var(--white);
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .phone-link:hover {
+            color: var(--teal-light);
+        }
+        
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-top: 80px;
+            background: 
+                linear-gradient(135deg, rgba(15,23,42,0.97) 0%, rgba(15,23,42,0.85) 100%),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(13,148,136,0.05) 50px,
+                    rgba(13,148,136,0.05) 51px
+                ),
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(13,148,136,0.05) 50px,
+                    rgba(13,148,136,0.05) 51px
+                );
+        }
+        
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .hero-text h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            line-height: 0.95;
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        
+        .hero-text h1 .highlight {
+            color: var(--teal-light);
+            display: block;
+        }
+        
+        .hero-text .tagline {
+            font-size: 1.25rem;
+            color: var(--slate-400);
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+        
+        .hero-text .tagline strong {
+            color: var(--white);
+            font-weight: 600;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: var(--teal);
+            color: var(--slate-900);
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            padding: 16px 40px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 3px solid var(--teal);
+        }
+        
+        .cta-button:hover {
+            background: transparent;
+            color: var(--teal);
+        }
+        
+        .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+        
+        .stat-block {
+            background: var(--slate-800);
+            padding: 32px;
+            border-left: 4px solid var(--teal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stat-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(13,148,136,0.08));
+        }
+        
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--teal);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--slate-400);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 8px;
+        }
+        
+        /* Section Styling */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        
+        .section-header .accent-line {
+            width: 80px;
+            height: 4px;
+            background: var(--teal);
+        }
+        
+        /* Services */
+        .services {
+            background: var(--slate-800);
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+        
+        .service-card {
+            background: var(--slate-900);
+            padding: 40px 32px;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-4px);
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--teal);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .service-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            color: var(--teal);
+        }
+        
+        .service-card p {
+            color: var(--slate-400);
+            font-size: 0.95rem;
+        }
+        
+        /* Differentiator */
+        .differentiator {
+            background: var(--slate-900);
+            position: relative;
+        }
+        
+        .diff-content {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .diff-text h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            letter-spacing: 2px;
+            margin-bottom: 24px;
+        }
+        
+        .diff-text h2 .highlight {
+            color: var(--teal);
+        }
+        
+        .diff-text p {
+            color: var(--slate-400);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        
+        .diff-text p strong {
+            color: var(--white);
+        }
+        
+        .credentials {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-top: 32px;
+        }
+        
+        .credential-tag {
+            background: var(--slate-700);
+            padding: 10px 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-left: 3px solid var(--teal);
+        }
+        
+        .diff-visual {
+            position: relative;
+        }
+        
+        .quote-block {
+            background: var(--slate-800);
+            padding: 48px;
+            position: relative;
+        }
+        
+        .quote-block::before {
+            content: '"';
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 8rem;
+            color: var(--teal);
+            opacity: 0.3;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            line-height: 1;
+        }
+        
+        .quote-block p {
+            font-size: 1.4rem;
+            font-weight: 500;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-block .attribution {
+            margin-top: 24px;
+            font-size: 0.9rem;
+            color: var(--slate-400);
+        }
+        
+        /* Equipment */
+        .equipment {
+            background: var(--slate-800);
+        }
+        
+        .equipment-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: center;
+        }
+        
+        .equipment-tag {
+            background: var(--slate-900);
+            padding: 16px 28px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            border: 2px solid var(--slate-700);
+            transition: all 0.3s ease;
+        }
+        
+        .equipment-tag:hover {
+            border-color: var(--teal);
+            color: var(--teal);
+        }
+        
+        /* Contact */
+        .contact {
+            background: var(--slate-900);
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+        }
+        
+        .contact .subtitle {
+            color: var(--slate-400);
+            font-size: 1.1rem;
+            margin-bottom: 48px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+        
+        .contact-phone {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            color: var(--teal);
+            text-decoration: none;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-phone:hover {
+            text-shadow: 0 0 30px rgba(20,184,166,0.5);
+        }
+        
+        .contact-detail {
+            color: var(--slate-400);
+            font-size: 1rem;
+        }
+        
+        .service-area {
+            margin-top: 48px;
+            padding: 32px;
+            background: var(--slate-800);
+            display: inline-block;
+        }
+        
+        .service-area h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: var(--teal);
+        }
+        
+        .service-area p {
+            color: var(--slate-400);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--slate-800);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 3px solid var(--teal);
+        }
+        
+        footer p {
+            color: var(--slate-400);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .diff-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .header-inner {
+                flex-direction: column;
+                gap: 12px;
+            }
+            
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat-block {
+                padding: 24px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .quote-block {
+                padding: 32px 24px;
+            }
+            
+            .quote-block p {
+                font-size: 1.1rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-text, .hero-stats {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .hero-stats {
+            animation-delay: 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">CAB & GRADE <span>MACHINE CONTROL</span></a>
+            <div class="header-cta">
+                <a href="tel:7209094727" class="phone-link">720-909-4727</a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>
+                        THE TECH WHO CAN
+                        <span class="highlight">RUN YOUR MACHINE</span>
+                    </h1>
+                    <p class="tagline">
+                        GPS machine control, GNSS RTK setup, and diagnostics from a <strong>factory-trained technician</strong> with real seat time. Based in Denver, serving jobsites nationwide.
+                    </p>
+                    <a href="tel:7209094727" class="cta-button">Call Dylan: 720-909-4727</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-block">
+                        <div class="stat-number">25+</div>
+                        <div class="stat-label">Years on Heavy Equipment</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">TRIMBLE</div>
+                        <div class="stat-label">Factory-Trained Technician</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-number">NATIONWIDE</div>
+                        <div class="stat-label">Service from Denver, CO</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services</h2>
+                <div class="accent-line"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📡</div>
+                    <h3>GNSS & RTK Setup</h3>
+                    <p>Base and rover configuration, Ace rover setup, network RTK connections. Get your positioning system dialed in right the first time.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Cab Install Kits</h3>
+                    <p>Complete hardware installation for GPS machine control systems. Displays, receivers, sensors, and harnesses installed to spec.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>CAN Bus Diagnostics</h3>
+                    <p>Electrical troubleshooting for machine data networks. When your sensors aren't talking to your display, I find out why.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Machine Control Troubleshooting</h3>
+                    <p>System not hitting grade? Display throwing errors? I diagnose and fix what's keeping you from production.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⚙️</div>
+                    <h3>Earthworks Configuration</h3>
+                    <p>Full setup and calibration of Trimble Earthworks systems. Automatics configuration, sensor calibration, and blade/bucket setup.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔄</div>
+                    <h3>GCS 900 to Earthworks Conversions</h3>
+                    <p>Upgrade your legacy GCS 900 systems to Earthworks. File conversions, machine file setup, and operator training included.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Differentiator Section -->
+    <section class="differentiator">
+        <div class="container">
+            <div class="diff-content">
+                <div class="diff-text">
+                    <h2>MOST TECHS <span class="highlight">CAN'T DRIVE</span></h2>
+                    <p>
+                        They show up, plug in a laptop, and tell you what's wrong in language that doesn't help. Then they leave, and you're still not hitting grade.
+                    </p>
+                    <p>
+                        <strong>Dylan's been running heavy equipment since he was 15.</strong> Dozers, excavators, graders, scrapers—he's got real seat time on all of it. When he troubleshoots your machine control system, he can hop in the cab and actually test it himself.
+                    </p>
+                    <p>
+                        That means faster diagnostics, better calibrations, and a tech who speaks <strong>operator</strong> just as well as he speaks tech.
+                    </p>
+                    <div class="credentials">
+                        <span class="credential-tag">Factory-Trained Trimble Tech</span>
+                        <span class="credential-tag">GNSS & RTK Certified</span>
+                        <span class="credential-tag">Earthworks Qualified</span>
+                        <span class="credential-tag">GCS 900 Specialist</span>
+                    </div>
+                </div>
+                <div class="diff-visual">
+                    <div class="quote-block">
+                        <p>Finally, a tech who can actually test what he's fixing.</p>
+                        <div class="attribution">— The difference real seat time makes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Equipment Section -->
+    <section class="equipment">
+        <div class="container">
+            <div class="section-header" style="text-align: center;">
+                <h2>Machines & Industries</h2>
+                <div class="accent-line" style="margin: 0 auto;"></div>
+            </div>
+            <div class="equipment-list">
+                <span class="equipment-tag">Dozers</span>
+                <span class="equipment-tag">Excavators</span>
+                <span class="equipment-tag">Motor Graders</span>
+                <span class="equipment-tag">Scrapers</span>
+                <span class="equipment-tag">Compactors</span>
+                <span class="equipment-tag">Road Construction</span>
+                <span class="equipment-tag">Site Development</span>
+                <span class="equipment-tag">Mining</span>
+                <span class="equipment-tag">Agriculture</span>
+                <span class="equipment-tag">Residential Grading</span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Get Your System Running Right</h2>
+            <p class="subtitle">Flat rate troubleshooting. No dealer markup. Real seat time.</p>
+            <div class="contact-info">
+                <a href="tel:7209094727" class="contact-phone">720-909-4727</a>
+                <p class="contact-detail">Dylan Kreiling | Cab & Grade Machine Control</p>
+            </div>
+            <div class="service-area">
+                <h3>Service Area</h3>
+                <p>Based in Denver, CO — Available for nationwide travel</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Cab & Grade Machine Control. Denver, Colorado.</p>
+        </div>
+    </footer>
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Cab & Grade Machine Control",
+        "description": "GPS machine control services, GNSS RTK setup, Earthworks configuration, and CAN bus diagnostics. Factory-trained Trimble technician with real heavy equipment operating experience.",
+        "telephone": "720-909-4727",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Denver",
+            "addressRegion": "CO",
+            "addressCountry": "US"
+        },
+        "areaServed": {
+            "@type": "Country",
+            "name": "United States"
+        },
+        "priceRange": "$$",
+        "serviceType": [
+            "GPS Machine Control",
+            "GNSS RTK Setup",
+            "Machine Control Troubleshooting",
+            "Earthworks Configuration",
+            "CAN Bus Diagnostics",
+            "Cab Install Kits"
+        ]
+    }
+    </script>
+</body>
+</html>
